@@ -12,7 +12,6 @@ def press(num):
 	expression = expression + str(num)
 	# update the expression by using set method
 	equation.set(expression)
-
 # Function to evaluate the final expression
 def equalpress():
 	# Try and except statement is used for handling the errors like zero,division error etc.
@@ -56,7 +55,7 @@ if __name__ == "__main__":
 	gui.title("Simple Calculator by GEDDAM JITHENDRAKUMAR")
 
 	# set the configuration of GUI window
-	gui.geometry("340x192")
+	gui.geometry("340x190")
 
 	# StringVar() is the variable class
 	# we create an instance of this class
