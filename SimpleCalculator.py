@@ -55,91 +55,92 @@ if __name__ == "__main__":
 	gui.title("Simple Calculator by GEDDAM JITHENDRAKUMAR")
 
 	# set the configuration of GUI window
-	gui.geometry("340x190")
+	gui.geometry("610x600")
 
-	# StringVar() is the variable class
-	# we create an instance of this class
+	# StringVar() is the variable class we create an instance of this class
+	
 	equation = StringVar()
 
-	# create the text entry box for
-	# showing the expression .
-	expression_field = Entry(gui, textvariable=equation)
+	# create the text entry box for  showing the expression .
+	
+	expression_field = Entry(gui, textvariable=equation,font=("Lucida",18,"bold"))
 
-	# grid method is used for placing
-	# the widgets at respective positions
-	# in table like structure .
-	expression_field.grid(columnspan=5, ipadx=70,ipady=9)
+	# grid method is used for placing the widgets at respective positions in table like structure .
+	
+	
+	expression_field.grid(columnspan=5, ipadx=120,ipady=19)
 
-	# create a Buttons and place at a particular
-	# location inside the root window .
-	# when user press the button, the command or
-	# function affiliated to that button is executed .
+	# create a Buttons and place at a particular location inside the root window.when user press the button, the command or
+	#function affiliated to that button is executed .
+	
+	
+	
 	button1 = Button(gui, text=' 1 ', fg='white', bg='green',
-				        command=lambda: press(1), height=1, width=7)
+				        command=lambda: press(1), font=("Lucida",18,"bold"),height=3, width=7,border=6,borderwidth=3)
 	button1.grid(row=2, column=0)
 
 	button2 = Button(gui, text=' 2 ', fg='white', bg='green',
-					command=lambda: press(2), height=1, width=7)
+					command=lambda: press(2),font=("Lucida",18,"bold"), height=3, width=7,border=6,borderwidth=3)
 	button2.grid(row=2, column=1)
 
 	button3 = Button(gui, text=' 3 ', fg='white', bg='green',
-					command=lambda: press(3), height=1, width=7)
+					command=lambda: press(3), font=("Lucida",18,"bold"),height=3, width=7,border=6,borderwidth=3)
 	button3.grid(row=2, column=2)
 
 	button4 = Button(gui, text=' 4 ', fg='white', bg='green',
-					command=lambda: press(4), height=1, width=7)
+					command=lambda: press(4), font=("Lucida",18,"bold"),height=3, width=7,border=6,borderwidth=3)
 	button4.grid(row=3, column=0)
 
 	button5 = Button(gui, text=' 5 ', fg='white', bg='green',
-					command=lambda: press(5), height=1, width=7)
+					command=lambda: press(5), font=("Lucida",18,"bold"),height=3, width=7,border=6,borderwidth=3)
 	button5.grid(row=3, column=1)
 
 	button6 = Button(gui, text=' 6 ', fg='white', bg='green',
-					command=lambda: press(6), height=1, width=7)
+					command=lambda: press(6),font=("Lucida",18,"bold"), height=3, width=7,border=6,borderwidth=3)
 	button6.grid(row=3, column=2)
 
 	button7 = Button(gui, text=' 7 ', fg='white', bg='green',
-					command=lambda: press(7), height=1, width=7)
+					command=lambda: press(7), font=("Lucida",18,"bold"),height=3, width=7,border=6,borderwidth=3)
 	button7.grid(row=4, column=0)
 
 	button8 = Button(gui, text=' 8 ', fg='white', bg='green',
-					command=lambda: press(8), height=1, width=7)
+					command=lambda: press(8),font=("Lucida",18,"bold"), height=3, width=7,border=6,borderwidth=3)
 	button8.grid(row=4, column=1)
 
 	button9 = Button(gui, text=' 9 ', fg='white', bg='green',
-					command=lambda: press(9), height=1, width=7)
+					command=lambda: press(9),font=("Lucida",18,"bold"), height=3, width=7,border=6,borderwidth=3)
 	button9.grid(row=4, column=2)
 
 	button0 = Button(gui, text=' 0 ', fg='white', bg='green',
-					command=lambda: press(0), height=1, width=7)
+					command=lambda: press(0), font=("Lucida",18,"bold"),height=3, width=7,border=6,borderwidth=3)
 	button0.grid(row=5, column=0)
 
 	plus = Button(gui, text=' + ', fg='black', bg='red',
-				command=lambda: press("+"), height=1, width=7)
+				command=lambda: press("+"), font=("Lucida",18,"bold"),height=3, width=7,border=6,borderwidth=3)
 	plus.grid(row=2, column=3)
 
 	minus = Button(gui, text=' - ', fg='black', bg='red',
-				command=lambda: press("-"), height=1, width=7)
+				command=lambda: press("-"),font=("Lucida",18,"bold"), height=3, width=7,border=6,borderwidth=3)
 	minus.grid(row=3, column=3)
 
 	multiply = Button(gui, text=' * ', fg='black', bg='red',
-					command=lambda: press("*"), height=1, width=7)
+					command=lambda: press("*"),font=("Lucida",18,"bold"), height=3, width=7,border=6,borderwidth=3)
 	multiply.grid(row=4, column=3)
 
 	divide = Button(gui, text=' / ', fg='black', bg='red',
-					command=lambda: press("/"), height=1, width=7)
+					command=lambda: press("/"), font=("Lucida",18,"bold"),height=3, width=7,border=6,borderwidth=3)
 	divide.grid(row=5, column=3)
 
 	equal = Button(gui, text=' = ', fg='black', bg='red',
-				command=equalpress, height=1, width=7)
+				command=equalpress,font=("Lucida",18,"bold"), height=3, width=7,border=6,borderwidth=3)
 	equal.grid(row=5, column=2)
 
 	clear = Button(gui, text='Clear', fg='black', bg='red',
-				command=clear, height=1, width=7)
+				command=clear,font=("Lucida",18,"bold"), height=3, width=7,border=6,borderwidth=3)
 	clear.grid(row=5, column='1')
 
 	Decimal= Button(gui, text='.', fg='black', bg='red',
-					command=lambda: press('.'), height=1, width=7)
+					command=lambda: press('.'),font=("Lucida",18,"bold"),height=3, width=7,border=6,borderwidth=3)
 	Decimal.grid(row=6, column=0)
 	# start the GUI
 	gui.mainloop()
