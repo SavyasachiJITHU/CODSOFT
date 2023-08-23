@@ -1,98 +1,119 @@
+# Python program to generate random
+# password using Tkinter module
 import random
-import string
+import pyperclip
 from tkinter import *
-from tkinter import messagebox
+from tkinter.ttk import *
+import tkinter as tk
+from tkinter import ttk
+
+# Function for calculation of password
 
 
-def generate_random_password():
-    global length_input, generated_password
-    try:
-        length = int(length_input.get())
-        if length < 8:
-            messagebox.showwarning('WARNING', "Password length should be at least 8")
-        else:
-            characters = string.ascii_letters + string.digits + string.punctuation
-            password = ''
-            for i in range(length):
-                char = random.choice(characters)
-                password += char
-            generated_password.insert(END, password)
-    except:
-        messagebox.showwarning('WARNING', "!!Enter Valid Input!!")
+def low():
+	entry.delete(0, END)
+
+	# Get the length of password
+	length = var1.get()
+
+	lower = "abcdefghijklmnopqrstuvwxyz"
+	upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+	digits = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 !@#$%^&*()"
+	password = ""
+
+	# if strength selected is low
+	if var.get() == 1:
+		for i in range(0, length):
+			password = password + random.choice(lower)
+		return password
+
+	# if strength selected is medium
+	elif var.get() == 0:
+		for i in range(0, length):
+			password = password + random.choice(upper)
+		return password
+
+	# if strength selected is strong
+	elif var.get() == 3:
+		for i in range(0, length):
+			password = password + random.choice(digits)
+		return password
+	else:
+		print("Please choose an option")
 
 
-def reset_password():
-    global user_name, length_input, generated_password
-    user_name.delete(0, END)
-    length_input.delete(0, END)
-    generated_password.delete(0, END)
+# Function for generation of password
+def generate():
+	password1 = low()
+	entry.insert(10, password1)
 
 
-def accept_the_value():
-    global length_input, generated_password, user_name
-    your_user_name = user_name.get()
-    your_password = generated_password.get()
-    if your_password and your_user_name:
-        msg = 'Username:  ' + your_user_name + '\nPassword:  ' + your_password
-        messagebox.showinfo(title='Your Details', message=msg)
-    else:
-        messagebox.showwarning('WARNING', "!!Please enter username and generate the password!")
+# Function for copying password to clipboard
+def copy1():
+	random_password = entry.get()
+	pyperclip.copy(random_password)
 
 
-def main():
-    global length_input, generated_password, user_name
+# Main Function
 
-    root = Tk()
-    root.geometry('800x250')
-    root.minsize(800, 250)
-    root.title("Random Password Generator")
+# create GUI window
+root = Tk()
+var = IntVar()
+var1 = IntVar()
 
-    # info Section
-    info_label1 = Label(root, text="NOTE:", font=("Helvetica", 20, 'bold'), fg='red', bg='Blue')
-    info_label1.grid(row=0, column=1)
+# Title of your GUI window
+root.title("Random Password Generator by JithendraKumar ")
+root.configure(background='light blue')
+root.geometry('1200x350')
 
-    info_label2 = Label(root, text="Fill all the details Correctly", font=("Helvetica", 20, 'bold'), bg='blue')
-    info_label2.grid(row=0, column=2)
+# create label and entry to show
+# password generated
+Random_passwordl = Label(root, text="Password Generator ",font=('Lucida 13',25,'bold'))
+Random_passwordl.grid(row=0,column=1,pady=9,padx=10)
+Random_password = Label(root, text="Password: ",font=('Lucida 13',18,'bold'),foreground='white',background='blue')
+Random_password.grid(row=7)
+entry = Entry(root,font=("Lucida",18,"bold"))
+entry.grid(row=7, column=1,ipadx=90,ipady=4)
 
-    # username section
-    user_name_label = Label(root, text="User name:", font=("Helvetica", 17),)
-    user_name_label.grid(row=1, column=2)
+# create label for length of password
+c_label = Label(root, text="Length: ",font=('Lucida 13',18,'bold'),foreground='white',background='green')
+c_label.grid(row=2)
 
-    user_name = Entry(root)
-    user_name.grid(row=1, column=3, pady=10)
+strength = Label(root, text="Range of Strength ",font=('Lucida 13',18,'bold'),foreground='red',background='light green')
+strength.grid(row=3,column=1)
 
-    # Password length section
-    length_input_label = Label(root, text="Enter length of the password:", font=("Helvetica", 17),)
-    length_input_label.grid(row=2, column=2)
+# create Buttons Copy which will copy
+# password to clipboard and Generate
+# which will generate the password
+copy_button = Button(root, text="Copy", command=copy1 )
+copy_button.grid(row=7, column=3)
+generate_button = Button(root, text="Generate", command=generate)
+generate_button.grid(row=7, column=2,padx=10)
 
-    length_input = Entry(root)
-    length_input.grid(row=2, column=3, pady=10)
+# Radio Buttons for deciding the
+# strength of password
+# Default strength is Medium
+radio_low = Radiobutton(root, text="Low", variable=var, value=1)
+radio_low.grid(row=4, column=1, padx=50,pady=10)
+label1 = Label(root, text="(Lowercase letters) ",font=('Lucida 13',8,'bold'),foreground='green')
+label1.grid(row=4,column=2)
+radio_middle = Radiobutton(root, text="Medium", variable=var, value=0)
+radio_middle.grid(row=5, column=1, padx=50,pady=10)
+label1 = Label(root, text="(Lower&Uppercase letters) ",font=('Lucida 13',8,'bold'),foreground='green')
+label1.grid(row=5,column=2)
+radio_strong = Radiobutton(root, text="Strong", variable=var, value=3)
+radio_strong.grid(row=6, column=1, padx=50,pady=10)
+label1 = Label(root, text="(combination of lower,upper case alphabhets,digits,symbols) ",font=('Lucida 13',8,'bold'),foreground='green')
+label1.grid(row=6,column=2)
+combo = Combobox(root, textvariable=var1,font=("Lucida",18,'bold'))
 
-    # generated password length section
-    generated_password_label = Label(root, text="Generated Password:", font=("Helvetica", 17),)
-    generated_password_label.grid(row=3, column=2, pady=10)
+# Combo Box for length of your password
+combo['values'] = (8, 9, 10, 11, 12, 13, 14, 15, 16,
+				17, 18, 19, 20, 21, 22, 23, 24, 25,
+				26, 27, 28, 29, 30, 31, 32, "Length")
+combo.current(0)
+combo.bind('<<ComboboxSelected>>')
+combo.grid(column=1, row=2,ipadx=90,pady=9)
 
-    generated_password = Entry(root)
-    generated_password.grid(row=3, column=3)
-
-    # buttons section
-    generate_password_btn = Button(root, text="Generate", bg='green', font=("Helvetica", 15),
-                                   borderwidth=2, border=3,
-                                   command=generate_random_password)
-    generate_password_btn.grid(row=4, column=1,padx=20)
-
-    reset_btn = Button(root, text='Reset', bg='yellow', font=("Helvetica", 15),
-                       borderwidth=2, border=3,
-                       command=reset_password)
-    reset_btn.grid(row=4, column=2)
-
-    accept_btn = Button(root, text='Accept', bg='pink', font=("Helvetica", 15),
-                        borderwidth=2, border=3,
-                        command=accept_the_value)
-    accept_btn.grid(row=4, column=3, padx=80)
-
-    root.mainloop()
-
-
-if __name__ == '__main__':
-    main()
+# start the GUI
+root.mainloop()
