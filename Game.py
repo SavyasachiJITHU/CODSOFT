@@ -6,11 +6,11 @@ import random
 root = Tk()
 
 # Set geometry
-root.geometry("300x300")
+root.geometry("600x300")
 
 # Set title
-root.title("Rock Paper Scissor Game")
-
+root.title("Rock Paper Scissor Game by Jithendrakumar")
+root.configure(background='red')
 # Computer Value
 computer_value = {
 	"0": "Rock",
@@ -25,7 +25,7 @@ def reset_game():
 	b1["state"] = "active"
 	b2["state"] = "active"
 	b3["state"] = "active"
-	l1.config(text="Player			 ")
+	l1.config(text="Player  ")
 	l3.config(text="Computer")
 	l4.config(text="")
 
@@ -90,20 +90,20 @@ def isscissor():
 Label(root,
 	text="Rock Paper Scissor",
 	font="normal 20 bold",
-	fg="blue").pack(pady=20)
+	fg="light blue",bg="green").pack(pady=20)
 
 frame = Frame(root)
 frame.pack()
 
-l1 = Label(frame,
-		text="Player			 ",
-		font=10)
+l1 = Label(frame, 
+		text="Player         ",bg='light blue',
+		font=20)
 
 l2 = Label(frame,
-		text="VS			 ",
-		font="normal 10 bold")
+		text="               VS			 ",bg='light blue',
+		font="Lucida 10 bold")
 
-l3 = Label(frame, text="Computer", font=10)
+l3 = Label(frame, text="Computer", bg='light blue',font=18)
 
 l1.pack(side=LEFT)
 l2.pack(side=LEFT)
@@ -122,15 +122,15 @@ frame1 = Frame(root)
 frame1.pack()
 
 b1 = Button(frame1, text="Rock",
-			font=10, width=7,
+			font=15, width=9,bg='orange',
 			command=isrock)
 
 b2 = Button(frame1, text="Paper ",
-			font=10, width=7,
+			font=15, width=9,bg='purple',
 			command=ispaper)
 
 b3 = Button(frame1, text="Scissor",
-			font=10, width=7,
+			font=15, width=9,bg='violet',
 			command=isscissor)
 
 b1.pack(side=LEFT, padx=10)
@@ -138,7 +138,7 @@ b2.pack(side=LEFT, padx=10)
 b3.pack(padx=10)
 
 Button(root, text="Reset Game",
-	font=10, fg="red",
+	font=18, fg="red",
 	bg="black", command=reset_game).pack(pady=20)
 
 # Execute Tkinter
